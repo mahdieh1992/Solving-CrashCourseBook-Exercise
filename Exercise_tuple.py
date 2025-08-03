@@ -8,3 +8,4 @@ print()
 buffet = ("tea","water","Salad","Pasta")
 for food in buffet:
     print(food)
+	
