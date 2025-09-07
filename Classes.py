@@ -88,6 +88,41 @@ print(user1.login_attempts)
 user1.reset_login_attempts()
 print(user1.login_attempts)
 
+# 9.6 Ice Cream Stand
+class IceCreamStand(Restaurant):
+    def __init__(self,name,type):
+        super().__init__(name,type)
+        self.flavors = ['orange','berry','pineapple','banana']
+        
+    def describe_flavor(self):
+        if self.flavors:
+            for flavor in self.flavors:
+                print(flavor)
+                
+                
+ice1 = IceCreamStand('paliz','classic')
+ice1.describe_flavor()
+
+# 9.8 privileges
+class Privileges:
+    def __init__(self):
+        self.privileges = ['can delete post','can add post','can ban user']
+        
+    def show_privileges(self):
+        if self.privileges:
+            for privilege in self.privileges:
+                print(privilege)
+
+# 9.7 Admin
+class Admin(Users):
+    def __init__(self,firstname,lastname):
+        super().__init__(firstname,lastname)
+        self.privilege = Privileges()
+               
+admin1 = Admin('mahdieh','mohamadi')
+admin1.privilege.show_privileges()
+
+    
     
 
 
