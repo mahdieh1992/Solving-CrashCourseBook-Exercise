@@ -1,3 +1,4 @@
+from random import randint,choice
 from Restaurant import Restaurant
 from User import Users
 # 9.6 Ice Cream Stand
@@ -77,6 +78,27 @@ class ElectricCar(Car):
 restaurant1 = Restaurant('emarat','fancy')
 print(restaurant1.name)
 
+# 9.13 Dice
+class Die:
+    def __init__(self,sides = 6):
+        self.sides = sides
+        
+    def roll_die(self):
+           print(randint(1,self.sides))
+           
+die1 = Die(20)
+die1.roll_die()
+
+# 9.14 lottery 9.15 lottery analysis
+listLottery = [2,1,4,5,6,7,9,8,10,3,'a','b','d','c','e']
+result = ''
+for i in range(4):
+    result += f"{choice(listLottery)},"
     
+print(f"any ticket matching these {result.rstrip(',')} numbers or letters wins a prize")
+
+
+
+
 
 
