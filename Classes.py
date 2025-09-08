@@ -122,7 +122,45 @@ class Admin(Users):
 admin1 = Admin('mahdieh','mohamadi')
 admin1.privilege.show_privileges()
 
+# 9.9 Battery Upgrade 
+class Car:
+    def __init__(self,make,model,year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer = 0
+
+class Battery:
+    def __init__(self,size = 40):
+        self.size = size
     
+    def describe_battery(self):
+        print(f"battery size is {self.size}")
+        
+    def get_range(self):
+        range = 0
+        if self.size == 40:
+            range = 150
+        elif self.size == 65:
+            range = 225
+        print(f"This car can go about {range} miles on a full charge")
+
+    def upgrade_battery(self):
+        if self.size == 40:
+            self.size = 65
+        
+class ElectricCar(Car):
+    def __init__(self,make,model,year):
+        super().__init__(make,model,year)
+        self.batterySize = Battery()
+    
+
+car1 = ElectricCar('iran','mvm',2019)
+car1.batterySize.describe_battery()
+car1.batterySize.get_range()
+car1.batterySize.upgrade_battery()
+car1.batterySize.get_range()
+
     
 
 
