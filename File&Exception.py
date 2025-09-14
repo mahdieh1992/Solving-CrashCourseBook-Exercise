@@ -100,6 +100,44 @@ def favorite_number():
             else:
                 favoriteNumbers.append(int(num))
         pathFile.write_text(json.dumps(favoriteNumbers))
-        
-
 favorite_number()
+
+# 10.13 User Dictionary 10.14
+
+from pathlib import Path
+import json
+class User:
+    def __init__(self,path,userName,lastName,Email,isLogin):
+        self.path = path
+        self.userName = userName
+        self.lastName = lastName
+        self.Email = Email
+        self.isLogin = isLogin
+        
+    def createUser(self):
+        # prompt for a new user
+        self.path.write_text(json.dumps({
+            "name":self.userName,
+            "lastName":self.lastName,
+            "Email":self.Email,
+            "isLogin": self.isLogin
+        }))
+    
+    def show_user(self):
+        # show users that created
+        pathFile = self.path
+        if self.path.exists():
+            return json.loads(pathFile.read_text())
+        else:
+            self.createUser()
+            return json.loads(pathFile.read_text())
+    
+    def greet_user(self):
+        # greeting if user exists 
+        users = self.show_user()
+        if users:
+            return f"welcome {users['name'] } ** {users['lastName']}"
+                
+path = Path("./CrashCourse/usersInfo.json")
+user2 = User(path,'mina','mohamadi','mina@gmail.com',False)
+print(user2.greet_user())
